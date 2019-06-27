@@ -1,0 +1,101 @@
+.work-order-tail {
+  :global {
+    .associated-collapse {
+      border: none;
+      .ant-collapse-item {
+        border-top: 1px solid #e8e8e8;
+        margin-bottom: 16px;
+        border-bottom: 1px solid #e8e8e8;
+      }
+
+      .ant-collapse-header {
+        height: 48px;
+        line-height: 48px;
+        padding: 0 16px;
+        background: #f5f5f5;
+        border: 1px solid #e8e8e8;
+        border-bottom: 0;
+        border-top: 0;
+        i {
+          font-size: 16px;
+          color: #5867dd;
+          font-weight: bold;
+          padding: 12px;
+          border-radius: 28px;
+          -webkit-transition: background-color 0.3s;
+          transition: background-color 0.3s;
+          &:hover {
+            color: #4666cc;
+            background: #e6e9ed;
+          }
+        }
+        h3 {
+          margin: 0 0 0 12px;
+          display: inline;
+        }
+      }
+      .ant-collapse-header:hover {
+        background: #eee;
+      }
+      .ant-collapse-content > .ant-collapse-content-box {
+        padding: 0 !important;
+      }
+      .ant-table-thead {
+        background: #e8e8e8;
+      }
+      .ant-table .ant-table-placeholder {
+        border-bottom: 0;
+      }
+    }
+    .ant-col-14 .ant-col-4 {
+      width: 18.7%;
+    }
+    .ant-col-14 .ant-col-19 {
+      width: 81.3%;
+    }
+    // 左侧数据检索-搜索框样式
+    .ant-input-search {
+      margin-bottom: 12px;
+      & input,
+      & span,
+      & button {
+        height: 36px;
+      }
+      & i {
+        font-size: 20px;
+      }
+    }
+    .ant-collapse-content {
+      background-color: #fff !important;
+    }
+    .label-right {
+      margin-bottom: 24px;
+
+      :global {
+        .ant-form-item {
+          margin-bottom: 16px;
+
+          .ant-form-item-label {
+            text-align: right;
+            line-height: 28px;
+          }
+
+          .ant-form-item-control {
+            line-height: 28px;
+          }
+        }
+
+        .last-form-item {
+          .ant-form-item {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    .ant-collapse {
+      .ant-collapse-content-box .ant-form-item > .ant-form-item-label {
+        text-align: right;
+      }
+    }
+  }
+}

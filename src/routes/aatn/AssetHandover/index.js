@@ -1,0 +1,159 @@
+/**
+ * AssetHandover - 资产移出归还单
+ * @date: 2019-3-21
+ * @author: HBT <baitao.huang@hand-china.com>
+ * @version: 0.0.1
+ * @copyright Copyright (c) 2019, Hand
+ */
+
+import React, { Component } from 'react';
+import { Button } from 'hzero-ui';
+import { connect } from 'dva';
+import { routerRedux } from 'dva/router';
+import { Bind } from 'lodash-decorators';
+import { isUndefined, isEmpty } from 'lodash';
+import { Header, Content } from 'components/Page';
+import intl from 'utils/intl';
+import moment from 'moment';
+import ExcelExport from 'components/ExcelExport';
+import { HALM_ATN } from '@/utils/config';
+import { getCurrentOrganizationId, filterNullValueObject, getDateTimeFormat } from 'utils/utils';
+
+import FilterForm from './FilterForm';
+import ListTable from './ListTable';
+
+@connect(({ assetHandover, loading }) => ({
+  assetHandover,
+  loading: {
+    fetch: loading.effects['assetHandover/fetchAssetHandover'],
+  },
+  tenantId: getCurrentOrganizationId(),
+}))
+class AssetHandover extends Component {
+  form;
+  componentDidMount() {
+    const {
+      dispatch,
+      tenantId,
+      assetHandover: { pagination = {} },
+      location: { state: { _back } = {} },
+    } = this.props;
+    // 校验是否从详情页返回
+    const page = _back === -1 ? pagination : {};
+    this.handleSearch(page);
+    dispatch({ type: 'assetHandover/fetchLov', payload: { tenantId } });
+  }
+  /**
+   * 页面查询
+   * @param {object} fields - 查询参数
+   */
+  @Bind()
+  handleSearch(fields = {}) {
+    const { dispatch, tenantId } = this.props;
+    let filterValues = {};
+    if (!isUndefined(this.form)) {
+      const formValue = this.form.getFieldsValue();
+      filterValues = filterNullValueObject(formValue);
+    }
+    dispatch({
+      type: 'transferOrder/fetchTransactionTypeLine',
+      payload: {
+        tenantId,
+        transactionTypeId: filterValues.transactionTypeId,
+      },
+    });
+    dispatch({
+      type: 'assetHandover/fetchAssetHandover',
+      payload: {
+        tenantId,
+        ...filterValues,
+        planStartDateFrom: filterValues.planStartDateFrom
+          ? moment(filterValues.planStartDateFrom).format(getDateTimeFormat())
+          : null,
+        planStartDateTo: filterValues.planStartDateTo
+          ? moment(filterValues.planStartDateTo).format(getDateTimeFormat())
+          : null,
+        planEndDateFrom: filterValues.planEndDateFrom
+          ? moment(filterValues.planEndDateFrom).format(getDateTimeFormat())
+          : null,
+        planEndDateTo: filterValues.planEndDateTo
+          ? moment(filterValues.planEndDateTo).format(getDateTimeFormat())
+          : null,
+        page: isEmpty(fields) ? {} : fields,
+      },
+    });
+  }
+
+  /**
+   * 页面跳转
+   * @param {string} id - 移交归还单头id
+   */
+  @Bind()
+  handleGotoDetail(id) {
+    const { dispatch } = this.props;
+    const linkUrl = isUndefined(id) ? 'create' : `detail/${id}`;
+    if (isUndefined(id)) {
+      dispatch({
+        type: 'assetHandover/updateState',
+        payload: {
+          lineList: [],
+        },
+      });
+    }
+    dispatch(
+      routerRedux.push({
+        pathname: `/aatn/asset-handover/${linkUrl}`,
+      })
+    );
+  }
+
+  /**
+   * 传递表单参数
+   * @param {object} ref - FilterForm对象
+   */
+  @Bind()
+  handleBindRef(ref = {}) {
+    this.form = (ref.props || {}).form;
+  }
+
+  render() {
+    const promptCode = 'aatn.assetHandover';
+    const {
+      loading,
+      tenantId,
+      assetHandover: { pagination = {}, list = [], processStatusHeaderMap = [] },
+    } = this.props;
+    const filterProps = {
+      tenantId,
+      processStatusHeaderMap,
+      onRef: this.handleBindRef,
+      onSearch: this.handleSearch,
+    };
+    const listProps = {
+      pagination,
+      loading: loading.fetch,
+      dataSource: list,
+      onSearch: this.handleSearch,
+      onEdit: this.handleGotoDetail,
+    };
+    const exportParams = this.form ? this.form.getFieldsValue() : {};
+    return (
+      <React.Fragment>
+        <Header title={intl.get(`${promptCode}.view.message.title`).d('资产移交归还单')}>
+          <Button icon="plus" type="primary" onClick={() => this.handleGotoDetail()}>
+            {intl.get('hzero.common.button.create').d('新建')}
+          </Button>
+          <ExcelExport
+            requestUrl={`${HALM_ATN}/v1/${tenantId}/export`}
+            queryParams={exportParams}
+          />
+        </Header>
+        <Content>
+          <FilterForm {...filterProps} />
+          <ListTable {...listProps} />
+        </Content>
+      </React.Fragment>
+    );
+  }
+}
+export default AssetHandover;
