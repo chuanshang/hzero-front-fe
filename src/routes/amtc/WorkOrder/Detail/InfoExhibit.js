@@ -1,5 +1,16 @@
 import React, { Component, Fragment } from 'react';
-import { Form, Tabs, Row, Col, Input, Collapse, Icon, Select, DatePicker, Button } from 'hzero-ui';
+import {
+  Form,
+  Tabs,
+  Row,
+  Col,
+  Input,
+  Collapse,
+  Icon,
+  Select,
+  DatePicker,
+  // Button，
+} from 'hzero-ui';
 import intl from 'utils/intl';
 import { Bind } from 'lodash-decorators';
 import { isUndefined } from 'lodash';
@@ -15,16 +26,17 @@ import {
   EDIT_FORM_ROW_LAYOUT,
   FORM_COL_3_LAYOUT,
 } from 'utils/constants';
-import notification from 'utils/notification';
+// import notification from 'utils/notification';
 
-import WOOPList from './WOOPList';
-import WoLaborsList from '../../WoLabors/WoLaborsList';
-import WoMalfunctionList from '../../WoMalfunction/WoMalfunctionList';
-import WoChecklistGroupList from '../../WoChecklistGroups/WoChecklistGroupList';
-import WoChecklistList from '../../WoChecklists/WoChecklistList';
-import MaterialList from './MaterialList';
-import MaterialDetailDrawer from './MaterialDetailDrawer';
-import MaterialTreeModal from './MaterialTreeModal';
+// import WOOPList from './WOOPList';
+// import WoLaborsList from '../../WoLabors/WoLaborsList';
+// import WoMalfunctionList from '../../WoMalfunction/WoMalfunctionList';
+// import WoAssessList from '../../WoAssess/WoAssessList';
+// import WoChecklistGroupList from '../../WoChecklistGroups/WoChecklistGroupList';
+// import WoChecklistList from '../../WoChecklists/WoChecklistList';
+// import MaterialList from './MaterialList';
+// import MaterialDetailDrawer from './MaterialDetailDrawer';
+// import MaterialTreeModal from './MaterialTreeModal';
 import WrdModal from './WrdModal';
 
 @Form.create({ fieldNameProp: null })
@@ -33,7 +45,7 @@ class Detail extends Component {
     super(props);
     props.onRef(this);
     this.state = {
-      proSourceDetail: {},
+      // proSourceDetail: {},
       collapseKeys: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
     };
   }
@@ -168,54 +180,54 @@ class Detail extends Component {
   /**
    *  @function showEditDrawer - 显示编辑modal
    */
-  @Bind()
-  showEditDrawer(record) {
-    this.setState({ drawerVisible: true, proSourceDetail: record, param: record.processType });
-  }
+  // @Bind()
+  // showEditDrawer(record) {
+  //   this.setState({ drawerVisible: true, proSourceDetail: record, param: record.processType });
+  // }
 
   /**
    * Drawer Ok
    * @param {obejct} values - 操作数据对象
    */
-  @Bind()
-  handleDetailDrawerOk(values = {}) {
-    const { woMaterialId, ...other } = values;
-    if (values._status !== 'create') {
-      other.woMaterialId = woMaterialId;
-    }
-    const { dispatch, tenantId, woId } = this.props;
-    const { param } = this.state;
-    dispatch({
-      type: 'workOrder/saveMaterialData',
-      payload: {
-        tenantId,
-        data: [{ ...other, tenantId, woId: Number(woId), processType: param }],
-      },
-    }).then(res => {
-      if (res) {
-        notification.success();
-        dispatch({
-          type: 'workOrder/queryMaterialList',
-          payload: {
-            tenantId,
-            woId,
-          },
-        });
-        dispatch({
-          type: 'workOrder/queryMaterialReturnList',
-          payload: {
-            tenantId,
-            woId,
-          },
-        });
-        this.setState({ proSourceDetail: {}, drawerVisible: false });
-      }
-    });
-  }
-  @Bind()
-  handleDetailDrawerCancel() {
-    this.setState({ drawerVisible: false, proSourceDetail: {} });
-  }
+  // @Bind()
+  // handleDetailDrawerOk(values = {}) {
+  //   const { woMaterialId, ...other } = values;
+  //   if (values._status !== 'create') {
+  //     other.woMaterialId = woMaterialId;
+  //   }
+  //   const { dispatch, tenantId, woId } = this.props;
+  //   const { param } = this.state;
+  //   dispatch({
+  //     type: 'workOrder/saveMaterialData',
+  //     payload: {
+  //       tenantId,
+  //       data: [{ ...other, tenantId, woId: Number(woId), processType: param }],
+  //     },
+  //   }).then(res => {
+  //     if (res) {
+  //       notification.success();
+  //       dispatch({
+  //         type: 'workOrder/queryMaterialList',
+  //         payload: {
+  //           tenantId,
+  //           woId,
+  //         },
+  //       });
+  //       dispatch({
+  //         type: 'workOrder/queryMaterialReturnList',
+  //         payload: {
+  //           tenantId,
+  //           woId,
+  //         },
+  //       });
+  //       this.setState({ proSourceDetail: {}, drawerVisible: false });
+  //     }
+  //   });
+  // }
+  // @Bind()
+  // handleDetailDrawerCancel() {
+  //   this.setState({ drawerVisible: false, proSourceDetail: {} });
+  // }
   /**
    * 新增备件耗材投入tree
    */
@@ -234,131 +246,146 @@ class Detail extends Component {
   render() {
     const commonPromptCode = 'amtc.workOrder.model.workOrder';
     const {
-      woId,
+      // woId,
       isNew,
       editFlag,
-      dispatch,
-      woMalfuction,
-      loading,
+      // dispatch,
+      // woMalfuction,
+      // woAssess,
+      // loading,
       selectMaps,
       dataSource,
       form: { getFieldDecorator, getFieldValue },
       tenantId,
       woopList,
-      woopPagination,
-      onWoopSearch,
-      onDeleteWoop,
-      materialList,
-      materialPagination,
-      materialReturnList,
-      materialReturnPagination,
-      treeList,
-      treeHisList,
-      selectedRowKeys,
-      selectedRowHisKeys,
-      modalVisible,
+      // woopPagination,
+      // onWoopSearch,
+      // onDeleteWoop,
+      // materialList,
+      // materialPagination,
+      // materialReturnList,
+      // materialReturnPagination,
+      // treeList,
+      // treeHisList,
+      // selectedRowKeys,
+      // selectedRowHisKeys,
+      // modalVisible,
       wrdModalDisplay,
       itemProperty,
       tabPaneHeight,
-      onSelectRow,
-      onSelectHisRow,
-      onModalCancel,
-      onAssetModalOk,
-      onShowAssetModal,
-      onMaterialSearch,
-      onMaterialReturnSearch,
-      onDeleteMaterial,
+      // onSelectRow,
+      // onSelectHisRow,
+      // onModalCancel,
+      // onAssetModalOk,
+      // onShowAssetModal,
+      // onMaterialSearch,
+      // onMaterialReturnSearch,
+      // onDeleteMaterial,
       onWrdModalOk,
       onWrdCancel,
+      // assessTime,
+      // assessStatus,
     } = this.props;
     const { woStatusMap, mapSourceCodeMap, durationUomMap } = selectMaps;
     const {
-      proSourceDetail,
-      drawerVisible = false,
-      isMulti = false,
+      // proSourceDetail,
+      // drawerVisible = false,
+      // isMulti = false,
       collapseKeys = [],
     } = this.state;
-    const woopListProps = {
-      loading: loading.queryWorkProcessList,
-      dataSource: woopList,
-      pagination: woopPagination,
-      onLinkToWOOPDetail: this.handleLinkToWoopDetail,
-      onSearch: onWoopSearch,
-      onDeleteWoop,
-    };
-    const woMalfunctionListProps = {
-      isNew,
-      editFlag,
-      woId,
-      woName: dataSource.woName,
-      tenantId,
-      dispatch,
-      loading,
-      woMalfuction,
-    };
-    const woChecklistGroupsListProps = {
-      isNew,
-      editFlag,
-      dispatch,
-      parentId: woId,
-      parentType: 'WO',
-    };
-    const woChecklistListProps = {
-      isNew,
-      editFlag,
-      tenantId,
-      dispatch,
-      parentId: woId,
-      parentType: 'WO',
-    };
-    const woLaborsListProps = {
-      isNew,
-      editFlag,
-      tenantId,
-      dispatch,
-      parentId: woId,
-      parentType: 'WO',
-    };
-    const drawerDetailProps = {
-      tenantId,
-      dataSource: { ...proSourceDetail, woId },
-      title: intl.get(`amtc.workCenter.view.message.drawer`).d('编辑备件耗材'),
-      anchor: 'right',
-      maskClosable: false,
-      visible: drawerVisible,
-      onCancel: this.handleDetailDrawerCancel,
-      onOk: this.handleDetailDrawerOk,
-    };
-    const materialModalProps = {
-      isMulti,
-      treeList,
-      treeHisList,
-      selectedRowKeys,
-      selectedRowHisKeys,
-      modalVisible,
-      onSelectRow,
-      onSelectHisRow,
-      onAssetModalOk,
-      onSearchAsset: this.handleAddTreeMaterial,
-      loading: loading.equipmentAsset,
-      onCancel: onModalCancel,
-    };
-    const materialListProps = {
-      loading: loading.queryMaterialList,
-      dataSource: materialList,
-      pagination: materialPagination,
-      onSearch: onMaterialSearch,
-      onEditLine: this.showEditDrawer,
-      onDeleteMaterial,
-    };
-    const materialReturnListProps = {
-      loading: loading.queryMaterialReturnList,
-      dataSource: materialReturnList,
-      pagination: materialReturnPagination,
-      onSearch: onMaterialReturnSearch,
-      onEditLine: this.showEditDrawer,
-      onDeleteMaterial,
-    };
+    // const woopListProps = {
+    //   loading: loading.queryWorkProcessList,
+    //   dataSource: woopList,
+    //   pagination: woopPagination,
+    //   onLinkToWOOPDetail: this.handleLinkToWoopDetail,
+    //   onSearch: onWoopSearch,
+    //   onDeleteWoop,
+    // };
+    // const woMalfunctionListProps = {
+    //   isNew,
+    //   editFlag,
+    //   woId,
+    //   woName: dataSource.woName,
+    //   tenantId,
+    //   dispatch,
+    //   loading,
+    //   woMalfuction,
+    // };
+    // const woAssessListProps = {
+    //   isNew,
+    //   editFlag,
+    //   woId,
+    //   woName: dataSource.woName,
+    //   tenantId,
+    //   dispatch,
+    //   loading,
+    //   woAssess,
+    //   assessTime,
+    //   assessStatus,
+    // };
+    // const woChecklistGroupsListProps = {
+    //   isNew,
+    //   editFlag,
+    //   dispatch,
+    //   parentId: woId,
+    //   parentType: 'WO',
+    // };
+    // const woChecklistListProps = {
+    //   isNew,
+    //   editFlag,
+    //   tenantId,
+    //   dispatch,
+    //   parentId: woId,
+    //   parentType: 'WO',
+    // };
+    // const woLaborsListProps = {
+    //   isNew,
+    //   editFlag,
+    //   tenantId,
+    //   dispatch,
+    //   parentId: woId,
+    //   parentType: 'WO',
+    // };
+    // const drawerDetailProps = {
+    //   tenantId,
+    //   dataSource: { ...proSourceDetail, woId },
+    //   title: intl.get(`amtc.workCenter.view.message.drawer`).d('编辑备件耗材'),
+    //   anchor: 'right',
+    //   maskClosable: false,
+    //   visible: drawerVisible,
+    //   onCancel: this.handleDetailDrawerCancel,
+    //   onOk: this.handleDetailDrawerOk,
+    // };
+    // const materialModalProps = {
+    //   isMulti,
+    //   treeList,
+    //   treeHisList,
+    //   selectedRowKeys,
+    //   selectedRowHisKeys,
+    //   modalVisible,
+    //   onSelectRow,
+    //   onSelectHisRow,
+    //   onAssetModalOk,
+    //   onSearchAsset: this.handleAddTreeMaterial,
+    //   loading: loading.equipmentAsset,
+    //   onCancel: onModalCancel,
+    // };
+    // const materialListProps = {
+    //   loading: loading.queryMaterialList,
+    //   dataSource: materialList,
+    //   pagination: materialPagination,
+    //   onSearch: onMaterialSearch,
+    //   onEditLine: this.showEditDrawer,
+    //   onDeleteMaterial,
+    // };
+    // const materialReturnListProps = {
+    //   loading: loading.queryMaterialReturnList,
+    //   dataSource: materialReturnList,
+    //   pagination: materialReturnPagination,
+    //   onSearch: onMaterialReturnSearch,
+    //   onEditLine: this.showEditDrawer,
+    //   onDeleteMaterial,
+    // };
     const wrdModalProps = {
       tenantId,
       wrdModalDisplay,
@@ -391,8 +418,8 @@ class Detail extends Component {
             <WrdModal {...wrdModalProps} />
           </React.Fragment>
         ) : (
-          ''
-        )}
+            ''
+          )}
         <Tabs defaultActiveKey="basicTab">
           <Tabs.TabPane
             tab={intl.get(`${commonPromptCode}.tab.basicTab`).d('基本')}
@@ -434,12 +461,19 @@ class Detail extends Component {
                       >
                         {isNew || editFlag ? (
                           getFieldDecorator('woNum', {
-                            rules: [],
+                            rules: [
+                              {
+                                required: true,
+                                message: intl.get('hzero.common.validation.notNull', {
+                                  name: intl.get(`${commonPromptCode}.woNum`).d('工单编号'),
+                                }),
+                              },
+                            ],
                             initialValue: dataSource.woNum,
                           })(<Input />)
                         ) : (
                           <span>{dataSource.woNum}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -468,7 +502,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.maintSitesName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -497,7 +531,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.woTypeName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -524,7 +558,7 @@ class Detail extends Component {
                           })(<Input />)
                         ) : (
                           <span>{dataSource.woName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -535,7 +569,14 @@ class Detail extends Component {
                         {isNew || editFlag ? (
                           getFieldDecorator('woStatus', {
                             initialValue: dataSource.woStatus,
-                            rules: [],
+                            rules: [
+                              {
+                                required: true,
+                                message: intl.get('hzero.common.validation.notNull', {
+                                  name: intl.get(`${commonPromptCode}.woStatus`).d('工单状态'),
+                                }),
+                              },
+                            ],
                           })(
                             <Select>
                               {woStatusMap.map(i => (
@@ -545,7 +586,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.woStatusMeaning}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -567,14 +608,14 @@ class Detail extends Component {
                           })(
                             <Lov
                               disabled={itemProperty.actId.disabled}
-                              code="AFAM.ASSET_CATALOG"
+                              code="AMTC.ACT"
                               queryParams={{ tenantId }}
                               textValue={dataSource.actName}
                             />
                           )
                         ) : (
                           <span>{dataSource.actName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -601,7 +642,7 @@ class Detail extends Component {
                           })(<Input.TextArea rows={3} />)
                         ) : (
                           <span>{dataSource.description}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -655,7 +696,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.orgName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -684,7 +725,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.contactName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -704,7 +745,7 @@ class Detail extends Component {
                           })(<Input />)
                         ) : (
                           <span>{dataSource.contactDesc}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -719,7 +760,7 @@ class Detail extends Component {
                           })(<Input />)
                         ) : (
                           <span>{dataSource.phone}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -753,7 +794,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.assetLocationName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -782,7 +823,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.assetRouteName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -802,7 +843,7 @@ class Detail extends Component {
                           })(<Input />)
                         ) : (
                           <span>{dataSource.locationDesc}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -831,7 +872,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.assetName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -857,7 +898,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.mapSourceMeaing}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -913,7 +954,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.plannerGroupName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -945,7 +986,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.plannerName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -979,7 +1020,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.ownerGroupName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1011,7 +1052,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.ownerName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -1048,7 +1089,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.woopOwnerGroupName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1081,7 +1122,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.woopOwnerName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -1102,7 +1143,7 @@ class Detail extends Component {
                           })(<Switch disabled={itemProperty.waitingWoopownerFlag.disabled} />)
                         ) : (
                           <span>{yesOrNoRender(dataSource.waitingWoopownerFlag)}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1118,7 +1159,7 @@ class Detail extends Component {
                           })(<Switch disabled={itemProperty.ownerConfirmFlag.disabled} />)
                         ) : (
                           <span>{yesOrNoRender(dataSource.ownerConfirmFlag)}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -1164,7 +1205,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.priorityName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1179,7 +1220,7 @@ class Detail extends Component {
                           })(<Input />)
                         ) : (
                           <span>{dataSource.durationScheduled}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1200,7 +1241,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.durationUomMeaning}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -1247,7 +1288,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dateRender(dataSource.scheduledStartDate)}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1294,7 +1335,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dateRender(dataSource.scheduledFinishDate)}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1308,7 +1349,7 @@ class Detail extends Component {
                           })(<Switch />)
                         ) : (
                           <span>{yesOrNoRender(dataSource.planFixedFlag)}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -1355,7 +1396,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dateRender(dataSource.targetStartDate)}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1397,7 +1438,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dateRender(dataSource.targetFinishDate)}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -1437,7 +1478,7 @@ class Detail extends Component {
                           })(<Input />)
                         ) : (
                           <span>{dataSource.durationActual}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1479,7 +1520,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dateRender(dataSource.actualStartDate)}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1521,7 +1562,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dateRender(dataSource.actualFinishDate)}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -1577,7 +1618,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.reportOrgName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1606,7 +1647,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.reporterName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1638,7 +1679,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dateRender(dataSource.reportDate)}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
@@ -1674,7 +1715,7 @@ class Detail extends Component {
                           )
                         ) : (
                           <span>{dataSource.reportPriorityName}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1698,7 +1739,7 @@ class Detail extends Component {
                           })(<Input disabled={itemProperty.sourceTypeCode.disabled} />)
                         ) : (
                           <span>{dataSource.sourceTypeCode}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
@@ -1722,13 +1763,13 @@ class Detail extends Component {
                           })(<Input disabled={itemProperty.sourceReference.disabled} />)
                         ) : (
                           <span>{dataSource.sourceReference}</span>
-                        )}
+                          )}
                       </Form.Item>
                     </Col>
                   </Row>
                 </Form>
               </Collapse.Panel>
-              <Collapse.Panel
+              {/* <Collapse.Panel
                 showArrow={false}
                 key="F"
                 header={
@@ -1753,10 +1794,10 @@ class Detail extends Component {
                   </Col>
                 </Row>
                 <WOOPList {...woopListProps} />
-              </Collapse.Panel>
+              </Collapse.Panel> */}
             </Collapse>
           </Tabs.TabPane>
-          {isNew ? (
+          {/* {isNew ? (
             ''
           ) : (
             <Tabs.TabPane
@@ -1767,91 +1808,118 @@ class Detail extends Component {
               <WoMalfunctionList {...woMalfunctionListProps} />
             </Tabs.TabPane>
           )}
-          <Tabs.TabPane
-            tab={intl.get(`${commonPromptCode}.tab.material`).d('备件耗材')}
-            key="material"
-            style={{ height: tabPaneHeight, overflow: 'auto' }}
-          >
-            <Row style={{ margin: '10px' }}>
-              <Col>
-                <h3>备件耗材投入</h3>
-              </Col>
-            </Row>
-            <Row style={{ margin: '10px' }}>
-              <Col>
-                <Button icon="plus" type="primary" onClick={() => onShowAssetModal(true, 'INVEST')}>
-                  {intl.get(`amtc.workCenter.view.button.add`).d('新增')}
-                </Button>
-              </Col>
-            </Row>
-            <MaterialList {...materialListProps} />
-            <MaterialDetailDrawer {...drawerDetailProps} />
-            <MaterialTreeModal {...materialModalProps} />
-            <Row style={{ margin: '10px' }}>
-              <h3>备件耗材退回</h3>
-            </Row>
-            <Row style={{ margin: '10px' }}>
-              <Col>
-                <Button icon="plus" type="primary" onClick={() => onShowAssetModal(true, 'RETURN')}>
-                  {intl.get(`amtc.workCenter.view.button.add`).d('新增')}
-                </Button>
-              </Col>
-            </Row>
-            <MaterialList {...materialReturnListProps} />
-            <MaterialDetailDrawer {...drawerDetailProps} />
-            <MaterialTreeModal {...materialModalProps} />
-          </Tabs.TabPane>
-          <Tabs.TabPane
-            tab={intl.get(`${commonPromptCode}.tab.checklist`).d('检查项')}
-            key="checklist"
-            style={{ height: tabPaneHeight, overflow: 'auto' }}
-          >
-            <Collapse
-              bordered={false}
-              defaultActiveKey={['A', 'B']}
-              className="form-collapse"
-              onChange={this.handleChangeKey.bind(this)}
+          {isNew ? (
+            ''
+          ) : (
+            <Tabs.TabPane
+              tab={intl.get(`${commonPromptCode}.tab.assess`).d('服务评价')}
+              key="assess"
+              style={{ height: window.screen.availHeight / 2, overflow: 'auto' }}
             >
-              <Collapse.Panel
-                showArrow={false}
-                key="A"
-                header={
-                  <Fragment>
-                    <h3 style={collapseKeys.includes('A') ? {} : { color: 'rgba(0,0,0,.25)' }}>
-                      {intl.get(`${commonPromptCode}.panel.a`).d('实际检查项')}
-                    </h3>
-                    <a>
-                      {collapseKeys.includes('A')
-                        ? intl.get(`hzero.common.button.up`).d('收起')
-                        : intl.get(`hzero.common.button.expand`).d('展开')}
-                    </a>
-                    <Icon type={collapseKeys.includes('A') ? 'up' : 'down'} />
-                  </Fragment>
-                }
+              <WoAssessList {...woAssessListProps} />
+            </Tabs.TabPane>
+          )}
+          {isNew ? (
+            ''
+          ) : (
+            <Tabs.TabPane
+              tab={intl.get(`${commonPromptCode}.tab.material`).d('备件耗材')}
+              key="material"
+              style={{ height: tabPaneHeight, overflow: 'auto' }}
+            >
+              <Row style={{ margin: '10px' }}>
+                <Col>
+                  <h3>备件耗材投入</h3>
+                </Col>
+              </Row>
+              <Row style={{ margin: '10px' }}>
+                <Col>
+                  <Button
+                    icon="plus"
+                    type="primary"
+                    onClick={() => onShowAssetModal(true, 'INVEST')}
+                  >
+                    {intl.get(`amtc.workCenter.view.button.add`).d('新增')}
+                  </Button>
+                </Col>
+              </Row>
+              <MaterialList {...materialListProps} />
+              <MaterialDetailDrawer {...drawerDetailProps} />
+              <MaterialTreeModal {...materialModalProps} />
+              <Row style={{ margin: '10px' }}>
+                <h3>备件耗材退回</h3>
+              </Row>
+              <Row style={{ margin: '10px' }}>
+                <Col>
+                  <Button
+                    icon="plus"
+                    type="primary"
+                    onClick={() => onShowAssetModal(true, 'RETURN')}
+                  >
+                    {intl.get(`amtc.workCenter.view.button.add`).d('新增')}
+                  </Button>
+                </Col>
+              </Row>
+              <MaterialList {...materialReturnListProps} />
+              <MaterialDetailDrawer {...drawerDetailProps} />
+              <MaterialTreeModal {...materialModalProps} />
+            </Tabs.TabPane>
+          )}
+          {isNew ? (
+            ''
+          ) : (
+            <Tabs.TabPane
+              tab={intl.get(`${commonPromptCode}.tab.checklist`).d('检查项')}
+              key="checklist"
+              style={{ height: tabPaneHeight, overflow: 'auto' }}
+            >
+              <Collapse
+                bordered={false}
+                defaultActiveKey={['A', 'B']}
+                className="form-collapse"
+                onChange={this.handleChangeKey.bind(this)}
               >
-                <WoChecklistList {...woChecklistListProps} />
-              </Collapse.Panel>
-              <Collapse.Panel
-                showArrow={false}
-                key="B"
-                header={
-                  <Fragment>
-                    <h3 style={collapseKeys.includes('B') ? {} : { color: 'rgba(0,0,0,.25)' }}>
-                      {intl.get(`${commonPromptCode}.panel.b`).d('实际检查组')}
-                    </h3>
-                    <a>
-                      {collapseKeys.includes('B')
-                        ? intl.get(`hzero.common.button.up`).d('收起')
-                        : intl.get(`hzero.common.button.expand`).d('展开')}
-                    </a>
-                    <Icon type={collapseKeys.includes('B') ? 'up' : 'down'} />
-                  </Fragment>
-                }
-              >
-                <WoChecklistGroupList {...woChecklistGroupsListProps} />
-              </Collapse.Panel>
-            </Collapse>
-          </Tabs.TabPane>
+                <Collapse.Panel
+                  showArrow={false}
+                  key="A"
+                  header={
+                    <Fragment>
+                      <h3 style={collapseKeys.includes('A') ? {} : { color: 'rgba(0,0,0,.25)' }}>
+                        {intl.get(`${commonPromptCode}.panel.a`).d('实际检查项')}
+                      </h3>
+                      <a>
+                        {collapseKeys.includes('A')
+                          ? intl.get(`hzero.common.button.up`).d('收起')
+                          : intl.get(`hzero.common.button.expand`).d('展开')}
+                      </a>
+                      <Icon type={collapseKeys.includes('A') ? 'up' : 'down'} />
+                    </Fragment>
+                  }
+                >
+                  <WoChecklistList {...woChecklistListProps} />
+                </Collapse.Panel>
+                <Collapse.Panel
+                  showArrow={false}
+                  key="B"
+                  header={
+                    <Fragment>
+                      <h3 style={collapseKeys.includes('B') ? {} : { color: 'rgba(0,0,0,.25)' }}>
+                        {intl.get(`${commonPromptCode}.panel.b`).d('实际检查组')}
+                      </h3>
+                      <a>
+                        {collapseKeys.includes('B')
+                          ? intl.get(`hzero.common.button.up`).d('收起')
+                          : intl.get(`hzero.common.button.expand`).d('展开')}
+                      </a>
+                      <Icon type={collapseKeys.includes('B') ? 'up' : 'down'} />
+                    </Fragment>
+                  }
+                >
+                  <WoChecklistGroupList {...woChecklistGroupsListProps} />
+                </Collapse.Panel>
+              </Collapse>
+            </Tabs.TabPane>
+          )}
           <Tabs.TabPane
             tab={intl.get(`${commonPromptCode}.tab.labor`).d('人员')}
             key="labor"
@@ -1883,7 +1951,7 @@ class Detail extends Component {
                 <WoLaborsList {...woLaborsListProps} />
               </Collapse.Panel>
             </Collapse>
-          </Tabs.TabPane>
+          </Tabs.TabPane> */}
         </Tabs>
       </React.Fragment>
     );

@@ -34,19 +34,19 @@ class ListTable extends PureComponent {
         width: 100,
       },
       {
-        title: intl.get(`${promptCode}.planStartDate`).d('计划执行日期'),
+        title: intl.get(`${promptCode}.planStartDate`).d('执行日期'),
         dataIndex: 'planStartDate',
         width: 120,
         render: dateRender,
       },
       {
-        title: intl.get(`${promptCode}.planEndDate`).d('计划完成日期'),
+        title: intl.get(`${promptCode}.planEndDate`).d('完成日期'),
         dataIndex: 'planEndDate',
         width: 120,
         render: dateRender,
       },
       {
-        title: intl.get(`${promptCode}.description`).d('描述'),
+        title: intl.get(`${promptCode}.description`).d('理由'),
         dataIndex: 'description',
       },
     ];

@@ -401,7 +401,6 @@ class TransactionDrawer extends PureComponent {
       title,
       form,
       dynamicFields,
-      statusScope,
       loading,
       lineDetail,
       tenantId,
@@ -538,7 +537,7 @@ class TransactionDrawer extends PureComponent {
                     })(
                       <Lov
                         code="AAFM.ASSET_STATUS"
-                        queryParams={{ tenantId, statusScope: JSON.stringify(statusScope) }}
+                        queryParams={{ tenantId }}
                         textValue={dataSource.targetAssetStatusName}
                       />
                     )
@@ -574,7 +573,7 @@ class TransactionDrawer extends PureComponent {
                       initialValue: dataSource.targetOwningPersonId,
                       rules: [
                         {
-                          required: true,
+                          required: false,
                           message: intl.get('hzero.common.validation.notNull', {
                             name: intl
                               .get(`${commonPromptCode}.targetOwningPerson`)
@@ -624,7 +623,7 @@ class TransactionDrawer extends PureComponent {
                       initialValue: dataSource.targetUsingPersonId,
                       rules: [
                         {
-                          required: true,
+                          required: false,
                           message: intl.get('hzero.common.validation.notNull', {
                             name: intl.get(`${commonPromptCode}.targetUsingPerson`).d('目标使用人'),
                           }),
@@ -731,7 +730,7 @@ class TransactionDrawer extends PureComponent {
                       })(
                         <Lov
                           code="AAFM.ASSET_STATUS"
-                          queryParams={{ tenantId, statusScope: JSON.stringify(statusScope) }}
+                          queryParams={{ tenantId }}
                           textValue={dataSource.targetAssetStatusName}
                         />
                       )

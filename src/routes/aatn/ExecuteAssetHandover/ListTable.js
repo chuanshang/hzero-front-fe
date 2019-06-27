@@ -48,7 +48,7 @@ class ListTable extends PureComponent {
         onCell: () => this.handleCell(180),
       },
       {
-        title: intl.get(`${promptCode}.description`).d('描述'),
+        title: intl.get(`${promptCode}.description`).d('理由'),
         dataIndex: 'description',
       },
       {

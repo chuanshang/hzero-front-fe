@@ -25,7 +25,7 @@ class ListTable extends PureComponent {
         width: 100,
       },
       {
-        title: intl.get(`${promptCode}.description`).d('描 述'),
+        title: intl.get(`${promptCode}.description`).d('理由'),
         dataIndex: 'description',
         width: 100,
         align: 'center',

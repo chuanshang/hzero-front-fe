@@ -28,7 +28,7 @@
     "hzero-front-hdtt": "^0.9.0",
     "hzero-front-hfile": "^0.9.0",
     "hzero-front-hiam": "^0.9.0",
-    "hzero-front-himp": "^0.9.0",
+    "hzero-front-himp": "^0.9.1",
     "hzero-front-hitf": "^0.9.0",
     "hzero-front-hmsg": "^0.9.0",
     "hzero-front-hpfm": "^0.9.1",
@@ -51,7 +51,7 @@
     "extends": "react-app"
   },
   "scripts": {
-    "start": "cross-env BASE_PATH=/ PLATFORM_VERSION=SAAS CLIENT_ID=localhost BPM_HOST=http://192.168.12.103:8330 API_HOST=http://hzerodevb.saas.hand-china.com WEBSOCKET_HOST=ws://172.20.0.202:8260 SRC_WEBSOCKET_URL=http://192.168.16.127:8500 node --max_old_space_size=4096 scripts/start.js",
+    "start": "cross-env BASE_PATH=/ PLATFORM_VERSION=SAAS CLIENT_ID=hzero-front-dev  BPM_HOST=http://dev.hzero.org:8330  API_HOST=http://dev.hzero.org:8080 WEBSOCKET_HOST=ws://dev.hzero.org:8260 SRC_WEBSOCKET_URL=http://192.168.16.127:8500 node --max_old_space_size=4096 scripts/start.js",
     "build": "npm run lint:fix && cross-env BASE_PATH=/ WEBSOCKET_HOST=BUILD_WEBSOCKET_HOST BPM_HOST=BUILD_BPM_HOST CLIENT_ID=BUILD_CLIENT_ID API_HOST=BUILD_API_HOST GENERATE_SOURCEMAP=false ESLINT=none node --max_old_space_size=4196 scripts/build.js",
     "build:analyze": "npm run lint:fix && cross-env ANALYZE=true node --max_old_space_size=4196 scripts/build.js",
     "build:dll": "webpack --progress --config config/webpack.dll.config.js",

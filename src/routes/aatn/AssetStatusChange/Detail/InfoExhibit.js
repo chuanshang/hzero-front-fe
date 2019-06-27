@@ -350,7 +350,7 @@ class InfoExhibit extends Component {
                   >
                     <Col {...FORM_COL_3_LAYOUT}>
                       <Form.Item
-                        label={intl.get(`${modelPrompt}.planStartDate`).d('计划执行日期')}
+                        label={intl.get(`${modelPrompt}.planStartDate`).d('执行日期')}
                         {...EDIT_FORM_ITEM_LAYOUT}
                       >
                         {!isNew || editControl ? (
@@ -381,7 +381,7 @@ class InfoExhibit extends Component {
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
                       <Form.Item
-                        label={intl.get(`${modelPrompt}.planEndDate`).d('计划完成日期')}
+                        label={intl.get(`${modelPrompt}.planEndDate`).d('完成日期')}
                         {...EDIT_FORM_ITEM_LAYOUT}
                       >
                         {!isNew || editControl ? (
@@ -413,7 +413,7 @@ class InfoExhibit extends Component {
                   >
                     <Col span={22}>
                       <Form.Item
-                        label={intl.get(`${modelPrompt}.description`).d('描述')}
+                        label={intl.get(`${modelPrompt}.description`).d('理由')}
                         {...longFormLayout}
                       >
                         {!isNew || editControl ? (

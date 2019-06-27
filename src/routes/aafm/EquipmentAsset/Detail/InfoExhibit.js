@@ -734,7 +734,7 @@ class InfoExhibit extends Component {
                               {
                                 required: true,
                                 message: intl.get('hzero.common.validation.notNull', {
-                                  name: intl.get(`${prefix}.assetNum`).d('资产编号'),
+                                  name: intl.get(`${prefix}.assetNum`).d('设备编号'),
                                 }),
                               },
                               {
@@ -764,7 +764,7 @@ class InfoExhibit extends Component {
                   >
                     <Col {...FORM_COL_3_LAYOUT}>
                       <Form.Item
-                        label={intl.get(`${prefix}.serialNum`).d('序列号')}
+                        label={intl.get(`${prefix}.serialNum`).d('资产编号')}
                         {...EDIT_FORM_ITEM_LAYOUT}
                       >
                         {!isNew || editFlag ? (
@@ -1518,7 +1518,7 @@ class InfoExhibit extends Component {
                   >
                     <Col {...FORM_COL_3_LAYOUT}>
                       <Form.Item
-                        label={intl.get(`${prefix}.owningOrg`).d('所属组织')}
+                        label={intl.get(`${prefix}.owningOrg`).d('归口管理部门')}
                         {...EDIT_FORM_ITEM_LAYOUT}
                       >
                         {!isNew || editFlag ? (
@@ -1538,7 +1538,7 @@ class InfoExhibit extends Component {
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
                       <Form.Item
-                        label={intl.get(`${prefix}.owningOrgDetail`).d('所属组织明细')}
+                        label={intl.get(`${prefix}.owningOrgDetail`).d('归口管理部门明细')}
                         {...EDIT_FORM_ITEM_LAYOUT}
                       >
                         {!isNew || editFlag ? (
@@ -1635,7 +1635,7 @@ class InfoExhibit extends Component {
                   >
                     <Col {...FORM_COL_3_LAYOUT}>
                       <Form.Item
-                        label={intl.get(`${prefix}.usingOrg`).d('使用组织')}
+                        label={intl.get(`${prefix}.usingOrg`).d('使用部门')}
                         {...EDIT_FORM_ITEM_LAYOUT}
                       >
                         {!isNew || editFlag ? (
@@ -1655,7 +1655,7 @@ class InfoExhibit extends Component {
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
                       <Form.Item
-                        label={intl.get(`${prefix}.useOrgDetail`).d('使用组织明细')}
+                        label={intl.get(`${prefix}.useOrgDetail`).d('使用部门明细')}
                         {...EDIT_FORM_ITEM_LAYOUT}
                       >
                         {!isNew || editFlag ? (

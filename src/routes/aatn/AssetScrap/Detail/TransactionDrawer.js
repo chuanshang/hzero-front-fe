@@ -217,35 +217,35 @@ class TransactionDrawer extends PureComponent {
         footer={
           isNew || editFlag
             ? [
-                <Button key="cancel" onClick={onCancel}>
-                  {intl.get('hzero.common.button.cancel').d('取消')}
-                </Button>,
-                <Button
-                  key="submit"
-                  type="primary"
-                  loading={loading.detailLineListLoading}
-                  onClick={() => this.saveBtn(lineData)}
-                >
-                  {intl.get('hzero.common.button.sure').d('确认')}
-                </Button>,
+              <Button key="cancel" onClick={onCancel}>
+                {intl.get('hzero.common.button.cancel').d('取消')}
+              </Button>,
+              <Button
+                key="submit"
+                type="primary"
+                loading={loading.detailLineListLoading}
+                onClick={() => this.saveBtn(lineData)}
+              >
+                {intl.get('hzero.common.button.sure').d('确认')}
+              </Button>,
               ]
             : [
-                <Button key="cancel" onClick={onCancel}>
-                  {intl.get('hzero.common.button.cancel').d('取消')}
-                </Button>,
-                <Button
-                  disabled={
+              <Button key="cancel" onClick={onCancel}>
+                {intl.get('hzero.common.button.cancel').d('取消')}
+              </Button>,
+              <Button
+                disabled={
                     !(
                       lineData.processStatus === 'WAIT_FOR_SCRAP' &&
                       (headerProcessStatus === 'APPROVED' || headerProcessStatus === 'PROCESSING')
                     )
                   }
-                  key="scrapConfirm"
-                  type="primary"
-                  onClick={() => this.conformLineBtn(lineData)}
-                >
-                  {intl.get('hzero.common.button.scrapConfirm').d('报废确认')}
-                </Button>,
+                key="scrapConfirm"
+                type="primary"
+                onClick={() => this.conformLineBtn(lineData)}
+              >
+                {intl.get('hzero.common.button.scrapConfirm').d('报废确认')}
+              </Button>,
               ]
         }
       >

@@ -19,8 +19,8 @@ class ListTable extends PureComponent {
       onDeleteLine,
     } = this.props;
     const prefix = 'aafm.dynamicColumn.model.dynamicColumn';
-    const tableSchema = 'halm_atn';
-    const tableName = 'aafm_asset';
+    const tableSchema = 'HALM_ATN';
+    const tableName = 'AAFM_ASSET';
     const columns = [
       {
         title: intl.get(`${prefix}.columnCode`).d('字段'),

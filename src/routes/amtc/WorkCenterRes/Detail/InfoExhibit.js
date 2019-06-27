@@ -213,8 +213,8 @@ class InfoExhibit extends Component {
               </Col>
               <Col span={8} className="ant-left-48">
                 <Form.Item label={intl.get(`amtc.common.model.level`).d('级别')} {...formLayout}>
-                  {getFieldDecorator('level', {
-                    initialValue: dataSource.level,
+                  {getFieldDecorator('rank', {
+                    initialValue: dataSource.rank,
                   })(<Input />)}
                 </Form.Item>
               </Col>

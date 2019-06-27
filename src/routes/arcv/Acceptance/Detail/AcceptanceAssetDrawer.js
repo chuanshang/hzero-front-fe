@@ -93,14 +93,14 @@ class AcceptanceAssetDrawer extends PureComponent {
         footer={
           (isNew || editFlag) && !AcceptanceAssetPanelReadOnly
             ? [
-                <Button key="submit" type="primary" loading={loading} onClick={this.saveBtn}>
-                  {intl.get('hzero.common.button.save').d('保存')}
-                </Button>,
+              <Button key="submit" type="primary" loading={loading} onClick={this.saveBtn}>
+                {intl.get('hzero.common.button.save').d('保存')}
+              </Button>,
               ]
             : [
-                <Button key="cancel" onClick={onCancel}>
-                  {intl.get('hzero.common.button.cancel').d('取消')}
-                </Button>,
+              <Button key="cancel" onClick={onCancel}>
+                {intl.get('hzero.common.button.cancel').d('取消')}
+              </Button>,
               ]
         }
       >

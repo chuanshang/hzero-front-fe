@@ -29,16 +29,23 @@ import FullTextSearch from './FullTextSearch';
 import InfoExhibit from './InfoExhibit';
 import styles from './index.less';
 
-@connect(({ workOrder, woMalfuction, loading }) => ({
+@connect(({
   workOrder,
-  woMalfuction,
+  // woMalfuction,
+  // woAssess,
+  loading,
+}) => ({
+  workOrder,
+  // woMalfuction,
+  // woAssess,
   tenantId: getCurrentOrganizationId(),
   loading: {
     queryDetailHeaderLoading: loading.effects['workOrder/fetchDetailInfo'],
     saveDetailLoading: loading.effects['workOrder/saveData'],
     fullTextSearchLoading: loading.effects['workOrder/searchFullText'],
     queryWorkProcessList: loading.effects['workOrder/queryWorkProcessList'],
-    listWoMalfuction: loading.effects['woMalfuction/listWoMalfuction'],
+    // listWoMalfuction: loading.effects['woMalfuction/listWoMalfuction'],
+    // listWoAssess: loading.effects['woAssess/listWoAssess'],
     queryMaterialList: loading.effects['workOrder/queryMaterialList'],
     queryMaterialReturnList: loading.effects['workOrder/queryMaterialReturnList'],
     queryItemsTreeMaterial: loading.effects['workOrder/queryItemsTreeMaterial'],
@@ -123,6 +130,7 @@ class Detail extends PureComponent {
     if (!isUndefined(id)) {
       this.handleFullSearch('', {});
     }
+    // this.props.dispatch({ type: 'woAssess/fetchLov', payload: { tenantId } });
   }
   @Bind()
   screenChange() {
@@ -1037,10 +1045,12 @@ class Detail extends PureComponent {
       match,
       tenantId,
       workOrder,
-      woMalfuction,
+      // woMalfuction,
+      // woAssess,
       woChecklists,
       woChecklistGroups,
     } = this.props;
+    // const { assessTime, assessStatus } = woAssess;
     const { queryDetailHeaderLoading, saveDetailLoading, fullTextSearchLoading } = loading;
     const {
       selectMaps,
@@ -1079,7 +1089,8 @@ class Detail extends PureComponent {
       selectedRowKeys,
       selectedRowHisKeys,
       dispatch,
-      woMalfuction,
+      // woMalfuction,
+      // woAssess,
       woChecklists,
       woChecklistGroups,
       tenantId,
@@ -1093,6 +1104,8 @@ class Detail extends PureComponent {
       itemProperty,
       tabPaneHeight,
       wrdModalDisplay,
+      // assessTime,
+      // assessStatus,
       onRef: this.handleBindRef,
       onRefresh: this.handleSearch,
       onWoopSearch: this.handleWoopSearch,

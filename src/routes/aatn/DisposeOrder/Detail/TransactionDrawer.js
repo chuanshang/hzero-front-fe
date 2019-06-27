@@ -552,7 +552,7 @@ class TransactionDrawer extends PureComponent {
                 )}
               </Form.Item>
             </Row>
-            <Row>
+            {/* <Row>
               <Form.Item
                 label={intl.get(`${commonPromptCode}.disposeCost`).d('处置成本')}
                 {...formLayout}
@@ -616,7 +616,7 @@ class TransactionDrawer extends PureComponent {
                   <span>{dataSource.disposeIncome}</span>
                 )}
               </Form.Item>
-            </Row>
+            </Row> */}
             <Row>
               <Form.Item
                 label={intl.get(`${commonPromptCode}.description`).d('备注')}

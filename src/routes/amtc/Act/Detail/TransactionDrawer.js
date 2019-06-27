@@ -108,17 +108,17 @@ class TransactionDrawer extends PureComponent {
         footer={
           isNew || editFlag
             ? [
-                <Button key="cancel" onClick={onCancel}>
-                  {intl.get('hzero.common.button.cancel').d('取消')}
-                </Button>,
-                <Button
-                  key="sure"
-                  type="primary"
+              <Button key="cancel" onClick={onCancel}>
+                {intl.get('hzero.common.button.cancel').d('取消')}
+              </Button>,
+              <Button
+                key="sure"
+                type="primary"
                   // loading={loading.detailLineListLoading}
-                  onClick={this.saveBtn}
-                >
-                  {intl.get('hzero.common.button.sure').d('确认')}
-                </Button>,
+                onClick={this.saveBtn}
+              >
+                {intl.get('hzero.common.button.sure').d('确认')}
+              </Button>,
               ]
             : null
         }

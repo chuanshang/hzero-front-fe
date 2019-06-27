@@ -128,8 +128,8 @@ class Drawer extends PureComponent {
               ],
             })(<Input />)}
           </Form.Item>
-          <Form.Item label={intl.get(`${commonPromptCode}.level`).d('级别')} {...formLayout}>
-            {getFieldDecorator('level', {
+          <Form.Item label={intl.get(`${commonPromptCode}.rank`).d('级别')} {...formLayout}>
+            {getFieldDecorator('rank', {
               rules: [],
             })(<Input />)}
           </Form.Item>

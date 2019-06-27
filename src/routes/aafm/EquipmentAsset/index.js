@@ -15,6 +15,8 @@ import { isUndefined, isEmpty } from 'lodash';
 import { Header, Content } from 'components/Page';
 import intl from 'utils/intl';
 import { getCurrentOrganizationId, filterNullValueObject } from 'utils/utils';
+import ExcelExport from 'components/ExcelExport';
+import { HALM_ATN } from '@/utils/config';
 
 import FilterForm from './FilterForm';
 import ListTable from './ListTable';
@@ -155,6 +157,7 @@ class EquipmentAsset extends Component {
       tenantId,
       equipmentAsset: { pagination, list = [], specialAsset = [], enumMap = [] },
     } = this.props;
+    const exportParams = selectedRowKeys ? { assetIds: selectedRowKeys.join(',') } : {};
     const filterProps = {
       tenantId,
       specialAsset,
@@ -185,6 +188,10 @@ class EquipmentAsset extends Component {
           >
             {intl.get('hzero.common.button.delete').d('删除')}
           </Button>
+          <ExcelExport
+            requestUrl={`${HALM_ATN}/v1/${tenantId}/asset-info/export`}
+            queryParams={exportParams}
+          />
         </Header>
         <Content>
           <FilterForm {...filterProps} />

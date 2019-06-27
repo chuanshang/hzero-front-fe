@@ -515,7 +515,7 @@ class DisposeOrderDetail extends Component {
                   <Row {...EDIT_FORM_ROW_LAYOUT}>
                     <Col {...FORM_COL_3_LAYOUT}>
                       <Form.Item
-                        label={intl.get(`${commonPromptCode}.planStartDate`).d('计划执行日期')}
+                        label={intl.get(`${commonPromptCode}.planStartDate`).d('执行日期')}
                         {...EDIT_FORM_ITEM_LAYOUT}
                       >
                         {isNew || editControl ? (
@@ -545,7 +545,7 @@ class DisposeOrderDetail extends Component {
                     </Col>
                     <Col {...FORM_COL_3_LAYOUT}>
                       <Form.Item
-                        label={intl.get(`${commonPromptCode}.planEndDate`).d('计划完成日期')}
+                        label={intl.get(`${commonPromptCode}.planEndDate`).d('完成日期')}
                         {...EDIT_FORM_ITEM_LAYOUT}
                       >
                         {isNew || editControl ? (
@@ -580,7 +580,7 @@ class DisposeOrderDetail extends Component {
                   <Row {...EDIT_FORM_ROW_LAYOUT}>
                     <Col span={22}>
                       <Form.Item
-                        label={intl.get(`${commonPromptCode}.description`).d('描述')}
+                        label={intl.get(`${commonPromptCode}.description`).d('理由')}
                         {...EDIT_FORM_ITEM_LAYOUT_COL_3}
                       >
                         {isNew || editControl ? (

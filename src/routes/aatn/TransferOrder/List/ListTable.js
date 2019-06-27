@@ -52,17 +52,17 @@ class ListTable extends PureComponent {
         dataIndex: 'principalPersonName',
       },
       {
-        title: intl.get(`${transferOrderModelPrompt}.planStartDate`).d('计划执行日期'),
+        title: intl.get(`${transferOrderModelPrompt}.planStartDate`).d('执行日期'),
         dataIndex: 'planStartDate',
         render: dateRender,
       },
       {
-        title: intl.get(`${transferOrderModelPrompt}.planEndDate`).d('计划完成日期'),
+        title: intl.get(`${transferOrderModelPrompt}.planEndDate`).d('完成日期'),
         dataIndex: 'planEndDate',
         render: dateRender,
       },
       {
-        title: intl.get(`${transferOrderModelPrompt}.description`).d('描述'),
+        title: intl.get(`${transferOrderModelPrompt}.description`).d('理由'),
         dataIndex: 'description',
       },
     ];

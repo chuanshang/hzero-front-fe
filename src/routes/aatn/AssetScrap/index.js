@@ -35,19 +35,17 @@ class AssetScrap extends Component {
   componentDidMount() {
     const {
       tenantId,
-      location: { state: { _back } = {} },
+      // location: { state: { _back } = {} },
       dispatch,
     } = this.props;
     this.handleSearch();
     dispatch({ type: 'assetScrap/fetchProcessStatusLov', payload: { tenantId } });
-    if (_back === -1) {
-      dispatch({
-        type: 'assetScrap/updateState',
-        payload: {
-          lineList: [],
-        },
-      });
-    }
+    dispatch({
+      type: 'assetScrap/updateState',
+      payload: {
+        lineList: [],
+      },
+    });
   }
   /**
    * 页面查询

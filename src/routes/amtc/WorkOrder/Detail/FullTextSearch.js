@@ -34,6 +34,45 @@ class FullTextSearch extends Component {
     this.props.onSearch(condition, page);
   }
 
+  @Bind()
+  getStatusColor(status) {
+    let colorCode = '#fff';
+
+    if (status === 'DRAFT') {
+      colorCode = '#f2efe6';
+    } else if (status === 'SUBMITTED') {
+      colorCode = '#f1f3de';
+    } else if (status === 'APPROVED') {
+      colorCode = '#dee8f3';
+    } else if (status === 'REJECTED') {
+      colorCode = '#ddc5b4';
+    } else if (status === 'WSCH') {
+      colorCode = '#dbddab';
+    } else if (status === 'WRD') {
+      colorCode = '#f3dede';
+    } else if (status === 'WPCOND') {
+      colorCode = '#ffe0aa';
+    } else if (status === 'INPRG') {
+      colorCode = '#c0dcff';
+    } else if (status === 'COMPLETED') {
+      colorCode = '#c0f9ff';
+    } else if (status === 'PRECLOSED') {
+      colorCode = '#e0ffea';
+    } else if (status === 'CLOSED') {
+      colorCode = '#c9e6d2';
+    } else if (status === 'CANCELED') {
+      colorCode = '#e0e0e0';
+    } else if (status === 'UNABLE') {
+      colorCode = '#bec2d7';
+    } else if (status === 'REWORK') {
+      colorCode = '#efddff';
+    } else if (status === 'RETURNED') {
+      colorCode = '#ffaaaa';
+    }
+
+    return { backgroundColor: colorCode };
+  }
+
   render() {
     const commonModelPrompt = 'amtc.workOrder.model.wo';
     const { currentWoId, dataSource, pagination, loading, onGotoDetail } = this.props;
@@ -64,13 +103,18 @@ class FullTextSearch extends Component {
                 </Col>
                 <Col span={20}>
                   <Row>
+                    <a onClick={() => onGotoDetail(record.woId)}>{record.woNum}</a>
+                  </Row>
+                  <Row>
                     <a onClick={() => onGotoDetail(record.woId)}>{record.woName}</a>
                   </Row>
                   <Row>
-                    <a onClick={() => onGotoDetail(record.woId)}>{record.woNum}</a>
+                    <Col span={8}>{record.orgName}</Col>
+                    <Col span={8}>{record.assetName}</Col>
+                    <Col span={8}>{record.assetLocationName}</Col>
                   </Row>
                 </Col>
-                <Tag>{record.woStatusMeaning}</Tag>
+                <Tag style={this.getStatusColor(record.woStatus)}>{record.woStatusMeaning}</Tag>
               </Row>
             </Col>
           </Fragment>
@@ -81,7 +125,7 @@ class FullTextSearch extends Component {
       <React.Fragment>
         <Input.Search
           enterButton
-          placeholder={intl.get(`${commonModelPrompt}.search`).d('搜索区域')}
+          placeholder={intl.get(`${commonModelPrompt}.search`).d('搜索名称或编号')}
           onSearch={this.handleSearch}
           onChange={this.handleChangeCondition}
         />

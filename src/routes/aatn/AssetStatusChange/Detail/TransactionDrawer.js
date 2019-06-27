@@ -599,7 +599,7 @@ class TransactionDrawer extends PureComponent {
                     </span>
                   )}
                 </Form.Item>
-                <Form.Item
+                {/* <Form.Item
                   label={intl.get(`${commonPromptCode}.currentUsingPerson`).d('当前使用人')}
                   {...formLayout}
                 >
@@ -617,8 +617,8 @@ class TransactionDrawer extends PureComponent {
                   ) : (
                     <span>{dataSource.currentUsingPersonName}</span>
                   )}
-                </Form.Item>
-                <Form.Item
+                </Form.Item> */}
+                {/* <Form.Item
                   label={intl.get(`${commonPromptCode}.targetUsingPerson`).d('目标使用人')}
                   {...formLayout}
                 >
@@ -642,7 +642,7 @@ class TransactionDrawer extends PureComponent {
                       {dataSource.targetUsingPersonName || dataSource.currentUsingPersonName}
                     </span>
                   )}
-                </Form.Item>
+                </Form.Item> */}
                 <Form.Item
                   label={intl.get(`${commonPromptCode}.description`).d('备注')}
                   {...formLayout}
